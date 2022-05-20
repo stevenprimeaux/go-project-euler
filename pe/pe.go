@@ -22,3 +22,23 @@ func SumMultiples(below int, multiples []int) int {
 
 	return sum - SumDivisibleBy(below, combinedMultiple)
 }
+
+func SumFibonacci(max int) int {
+	current := 0
+	prev1 := 1
+	prev2 := 1
+
+	sum := 0
+
+	for prev1 < max {
+		if current%2 == 0 {
+			sum += current
+		}
+
+		current = prev1 + prev2
+		prev2 = prev1
+		prev1 = current
+	}
+
+	return sum
+}

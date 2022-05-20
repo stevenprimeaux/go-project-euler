@@ -1,17 +1,16 @@
-package main
+package output
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 
 	"github.com/stevenprimeaux/go-project-euler/pe"
 )
 
-func main() {
-	below, _ := strconv.Atoi(os.Args[1])
+func PE1(args []string) {
+	below, _ := strconv.Atoi(args[2])
 	multiples := []int{}
-	for _, x := range os.Args[2:] {
+	for _, x := range args[3:] {
 		multiple, _ := strconv.Atoi(x)
 		multiples = append(multiples, multiple)
 	}
