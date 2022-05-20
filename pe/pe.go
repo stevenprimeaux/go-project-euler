@@ -4,15 +4,21 @@ func IsMultipleOf(divisor int, dividend int) bool {
 	return dividend%divisor == 0
 }
 
-func SumMultiples(below int, multiples ...int) (sum int) {
-	sum = 0
-	for d := 1; d < below; d++ {
-		for _, m := range multiples {
-			if IsMultipleOf(m, d) {
-				sum += d
-				break
-			}
-		}
+func SumDivisibleBy(below int, by int) int {
+	target := (below - 1) / by
+	return by * target * (target + 1) / 2
+}
+
+func SumMultiples(below int, multiples []int) int {
+	combinedMultiple := 1
+	for _, m := range multiples {
+		combinedMultiple *= m
 	}
-	return
+
+	sum := 0
+	for _, m := range multiples {
+		sum += SumDivisibleBy(below, m)
+	}
+
+	return sum - SumDivisibleBy(below, combinedMultiple)
 }
