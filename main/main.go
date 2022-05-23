@@ -12,6 +12,5 @@ var problems = map[string]interface{}{
 }
 
 func main() {
-
 	problems[os.Args[1]].(func([]string))(os.Args)
 }

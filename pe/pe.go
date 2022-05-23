@@ -1,9 +1,5 @@
 package pe
 
-func IsMultipleOf(divisor int, dividend int) bool {
-	return dividend%divisor == 0
-}
-
 func SumDivisibleBy(below int, by int) int {
 	target := (below - 1) / by
 	return by * target * (target + 1) / 2
@@ -23,22 +19,24 @@ func SumMultiples(below int, multiples []int) int {
 	return sum - SumDivisibleBy(below, combinedMultiple)
 }
 
-func SumFibonacci(max int) int {
-	current := 0
-	prev1 := 1
-	prev2 := 1
-
-	sum := 0
-
-	for prev1 < max {
-		if current%2 == 0 {
-			sum += current
-		}
-
-		current = prev1 + prev2
-		prev2 = prev1
-		prev1 = current
+func EvenFibonacci(n int) int {
+	if n == 0 {
+		return 0
+	} else if n == 1 {
+		return 2
 	}
+	return 4*EvenFibonacci(n-1) + EvenFibonacci(n-2)
+}
 
+func SumEvenFibonacci(max int) int {
+	sum := 0
+	next := 0
+	for i := 0; true; i++ {
+		next = EvenFibonacci(i)
+		if next > max {
+			break
+		}
+		sum += next
+	}
 	return sum
 }

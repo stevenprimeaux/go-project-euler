@@ -5,14 +5,16 @@ import (
 )
 
 func TestSumMultiples(t *testing.T) {
-	want := 23
-	got := SumMultiples(10, []int{3, 5})
+	want := 233168
+	got := SumMultiples(1000, []int{3, 5})
 	if got != want {
 		t.Errorf("got %d; want %d", got, want)
 	}
+}
 
-	want = 233168
-	got = SumMultiples(1000, []int{3, 5})
+func TestSumEvenFibonacci(t *testing.T) {
+	want := 4613732
+	got := SumEvenFibonacci(4000000)
 	if got != want {
 		t.Errorf("got %d; want %d", got, want)
 	}
