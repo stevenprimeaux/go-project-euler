@@ -40,3 +40,19 @@ func SumEvenFibonacci(max int) int {
 	}
 	return sum
 }
+
+func LargestPrimeFactor(n int) int {
+	currentFactor := 2
+	prevFactor := 1
+	for n > 1 {
+		if n%currentFactor == 0 {
+			prevFactor = currentFactor
+			n /= currentFactor
+			for n%currentFactor == 0 {
+				n /= currentFactor
+			}
+		}
+		currentFactor += 1
+	}
+	return prevFactor
+}

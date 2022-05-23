@@ -19,3 +19,11 @@ func TestSumEvenFibonacci(t *testing.T) {
 		t.Errorf("got %d; want %d", got, want)
 	}
 }
+
+func TestLargestPrimeFactor(t *testing.T) {
+	want := 6857
+	got := LargestPrimeFactor(600851475143)
+	if got != want {
+		t.Errorf("got %d; want %d", got, want)
+	}
+}

@@ -9,6 +9,7 @@ import (
 var problems = map[string]interface{}{
 	"1": output.PE1,
 	"2": output.PE2,
+	"3": output.PE3,
 }
 
 func main() {
