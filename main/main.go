@@ -1,8 +1,9 @@
 package main
 
 import (
-	"os"
+	"net/http"
 
+	"github.com/gorilla/mux"
 	"github.com/stevenprimeaux/go-project-euler/output"
 )
 
@@ -13,5 +14,12 @@ var problems = map[string]interface{}{
 }
 
 func main() {
-	problems[os.Args[1]].(func([]string))(os.Args)
+
+	r := mux.NewRouter()
+
+	r.HandleFunc("/problem/{problem}", func(w http.ResponseWriter, r *http.Request) {
+		problems[mux.Vars(r)["problem"]].(func(http.ResponseWriter, *http.Request))(w, r)
+	}).Methods("POST")
+
+	http.ListenAndServe(":8080", r)
 }
